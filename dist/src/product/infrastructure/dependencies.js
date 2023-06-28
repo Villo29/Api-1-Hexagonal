@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getByIdProductController = exports.getAllProductController = exports.createProductController = exports.getByIdProductUseCase = exports.getAllUseCase = exports.createProductUseCase = exports.mysqlProductRepository = void 0;
+const CreateProductUseCase_1 = require("../application/CreateProductUseCase");
+const GetAllProductUseCase_1 = require("../application/GetAllProductUseCase");
+const GetByIdProductUseCase_1 = require("../application/GetByIdProductUseCase");
+const CreateProductController_1 = require("./controllers/CreateProductController");
+const GetAllProductController_1 = require("./controllers/GetAllProductController");
+const GetByIdProductController_1 = require("./controllers/GetByIdProductController");
+const MysqlProductRepository_1 = require("./MysqlProductRepository");
+exports.mysqlProductRepository = new MysqlProductRepository_1.MysqlProductRepository();
+exports.createProductUseCase = new CreateProductUseCase_1.CreateProductUseCase(exports.mysqlProductRepository);
+exports.getAllUseCase = new GetAllProductUseCase_1.GetAllProductUseCase(exports.mysqlProductRepository);
+exports.getByIdProductUseCase = new GetByIdProductUseCase_1.GetByIdProductUseCase(exports.mysqlProductRepository);
+exports.createProductController = new CreateProductController_1.CreateProductController(exports.createProductUseCase);
+exports.getAllProductController = new GetAllProductController_1.GetAllProductController(exports.getAllUseCase);
+exports.getByIdProductController = new GetByIdProductController_1.GetByIdProductController(exports.getByIdProductUseCase);
